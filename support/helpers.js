@@ -77,10 +77,15 @@ async function timeout(ms){
     return new Promise(resolve => setTimeout(resolve,ms));
 }
 
+function randomNumber(min, max) { // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 module.exports = {
     postRequest,
     getRequest,
     deleteRequest,
     putRequest,
-    timeout
+    timeout,
+    randomNumber
 };

@@ -5,37 +5,61 @@ const apiData = require('../test_data/apiData');
 const testData = require('../test_data/testData');
 
 describe('Pet Store Tests - Positive',()=>{
+    let ID = 0;
     it('Should Create a Pet - Post call', async () => {
-        apiData.postPetBody.id =
+        ID = api.randomNumber(1,99999);
+        apiData.postPetBody.id = ID;
 
-        const res = api.postRequest(env.url,apiData.apis.postPets,apiData.postPetBody,apiData.commonHeaders,200);
+        const res = await api.postRequest(env.url,apiData.apis.postPets,apiData.postPetBody,apiData.commonHeaders);
+
+        test(await res.statusCode).to.equal(200);
+        test(await res.body.id).to.equal(ID);
+        test(await res.body.category.id).to.equal(apiData.postPetBody.category.id);
+        test(await res.body.category.name).to.equal(apiData.postPetBody.category.name);
+        test(await res.body.name).to.equal(apiData.postPetBody.name);
+        test(await res.body.photoUrls[0]).to.equal(apiData.postPetBody.photoUrls[0]);
+        test(await res.body.tags[0].id).to.equal(apiData.postPetBody.tags[0].id);
+        test(await res.body.tags[0].name).to.equal(apiData.postPetBody.tags[0].name);
+        test(await res.body.status).to.equal(apiData.postPetBody.status);
+
     });
-});
+    it('Should Get a Pets Details - Get call', async () => {
+        api.timeout(5000)
+        const res = await api.getRequest(env.url,apiData.apis.getPets.replace("$",ID),apiData.commonHeaders);
 
+        test(await res.statusCode).to.equal(200);
+        test(await res.body.id).to.equal(ID);
+        test(await res.body.category.id).to.equal(apiData.postPetBody.category.id);
+        test(await res.body.category.name).to.equal(apiData.postPetBody.category.name);
+        test(await res.body.name).to.equal(apiData.postPetBody.name);
+        test(await res.body.photoUrls[0]).to.equal(apiData.postPetBody.photoUrls[0]);
+        test(await res.body.tags[0].id).to.equal(apiData.postPetBody.tags[0].id);
+        test(await res.body.tags[0].name).to.equal(apiData.postPetBody.tags[0].name);
+        test(await res.body.status).to.equal(apiData.postPetBody.status);
 
+    });
+    it('Should Edit a Pet - Put call', async () => {
+        apiData.putPetBody.id = ID;
+        apiData.putPetBody.name = "TestPetNameEdit";
 
+        const res = await api.putRequest(env.url,apiData.apis.postPets,apiData.putPetBody,apiData.commonHeaders);
 
-xdescribe('Offer Orchestrator API - Offer Group',()=>{
-    Object.entries(testData.getOfferGroupsTestData).forEach(([variant, data]) => {
-        it('should get an employee with '+variant+' '+data.testID, async () => {
-            const res = await api.getRequest(env.url,apiData.apis.offerGroups+"?limit="+data.limit+"&offset="+apiData.getOfferGroupsParams.offset+"&inquiryHash="+apiData.getOfferGroupsParams.inquiryHash,apiData.commonHeaders);
+        test(await res.statusCode).to.equal(200);
+        test(await res.body.id).to.equal(ID);
+        test(await res.body.category.id).to.equal(apiData.putPetBody.category.id);
+        test(await res.body.category.name).to.equal(apiData.putPetBody.category.name);
+        test(await res.body.name).to.equal(apiData.putPetBody.name);
+        test(await res.body.photoUrls[0]).to.equal(apiData.putPetBody.photoUrls[0]);
+        test(await res.body.tags[0].id).to.equal(apiData.putPetBody.tags[0].id);
+        test(await res.body.tags[0].name).to.equal(apiData.putPetBody.tags[0].name);
+        test(await res.body.status).to.equal(apiData.putPetBody.status);
 
-            if(await res.statusCode === 200) {
-                test(await res.statusCode).to.equal(data.expectedResponseCode);
-                test(await res.body.count).to.equal(data.expectedLimit);
-                test(await res.body.total).to.be.a('number')
-                for (let i = 0; i < await res.body._embedded.offerGroups.length; i++) {
-                    test(await res.body._embedded.offerGroups[i].id).to.be.a('string')
-                    test(await res.body._embedded.offerGroups[i].inquiryHash).to.be.a('string')
-                    test(await res.body._embedded.offerGroups[i].createdAt).to.be.a('string')
-                }
-                test(await res.body._embedded.offerGroups.length).to.equal(data.expectedLimit)
-            } else {
-                test(await res.statusCode).to.equal(data.expectedResponseCode);
-                test(await res.body.statusCode).to.equal(data.expectedResponseCode);
-                test(await res.body.message[0]).to.equal(data.expectedMessage);
-                test(await res.body.error).to.equal(data.expectedError);
-            }
-        });
+    });
+    it('Should Delete a Pet - Delete call', async () => {
+        const res = await api.deleteRequest(env.url,apiData.apis.getPets.replace("$",ID),apiData.commonHeaders);
+
+        test(await res.statusCode).to.equal(200);
+        test(await res.body.type).to.equal("unknown");
+        test(await res.body.message).to.equal(ID.toString());
     });
 });

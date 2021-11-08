@@ -5,37 +5,37 @@ let apis = {
     deletePets: "/pet/$"
 }
 let putPetBody = {
-        "id": 0,
-        "category": {
-            "id": 0,
-            "name": "string"
-        },
-        "name": "doggie",
-        "photoUrls": [
-            "string"
-        ],
-        "tags": [
-            {
-                "id": 0,
-                "name": "string"
-            }
-        ],
-        "status": "available"
-    }
-let postPetBody = {
     "id": 0,
     "category": {
         "id": 0,
-        "name": "string"
+        "name": "TestCategoryName"
     },
-    "name": "doggie",
+    "name": "TestPetName",
     "photoUrls": [
         "string"
     ],
     "tags": [
         {
-            "id": 0,
-            "name": "string"
+            "id": 1,
+            "name": "TestPetTag"
+        }
+    ],
+    "status": "available"
+    }
+let postPetBody = {
+    "id": 0,
+    "category": {
+        "id": 0,
+        "name": "TestCategoryName"
+    },
+    "name": "TestPetName",
+    "photoUrls": [
+        "string"
+    ],
+    "tags": [
+        {
+            "id": 1,
+            "name": "TestPetTag"
         }
     ],
     "status": "available"

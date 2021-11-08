@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pets": "cross-env ENV=dev mocha 'tests/PetStoreTests.js' --reporter mocha-allure-reporter --timeout 20000 --reporter-options reportFilename=APIMochawesomeReport"
+    "pets": "cross-env ENV=stg mocha 'tests/PetStoreTests.js' --reporter mochawesome --timeout 20000 "
   },
   "keywords": [],
   "author": "",

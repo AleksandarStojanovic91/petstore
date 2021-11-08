@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-11-08T07:43:27.454Z",
+    "end": "2021-11-08T07:43:29.448Z",
+    "duration": 1994,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "79fed27e-0880-4ef4-875b-bc86b90c1956",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6e622fc0-58ad-4cc1-af8e-b80a3a1f453b",
+          "title": "Pet Store Tests - Positive",
+          "fullFile": "C:\\Users\\aleks\\OneDrive\\Desktop\\petstore\\tests\\PetStoreTests.js",
+          "file": "\\tests\\PetStoreTests.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should Create a Pet - Post call",
+              "fullTitle": "Pet Store Tests - Positive Should Create a Pet - Post call",
+              "timedOut": false,
+              "duration": 505,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "ID = api.randomNumber(1,99999);\napiData.postPetBody.id = ID;\nconst res = await api.postRequest(env.url,apiData.apis.postPets,apiData.postPetBody,apiData.commonHeaders);\ntest(await res.statusCode).to.equal(200);\ntest(await res.body.id).to.equal(ID);\ntest(await res.body.category.id).to.equal(apiData.postPetBody.category.id);\ntest(await res.body.category.name).to.equal(apiData.postPetBody.category.name);\ntest(await res.body.name).to.equal(apiData.postPetBody.name);\ntest(await res.body.photoUrls[0]).to.equal(apiData.postPetBody.photoUrls[0]);\ntest(await res.body.tags[0].id).to.equal(apiData.postPetBody.tags[0].id);\ntest(await res.body.tags[0].name).to.equal(apiData.postPetBody.tags[0].name);\ntest(await res.body.status).to.equal(apiData.postPetBody.status);",
+              "err": {},
+              "uuid": "49ce2dde-f8ac-4e49-b5dd-3109b9db121f",
+              "parentUUID": "6e622fc0-58ad-4cc1-af8e-b80a3a1f453b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should Get a Pets Details - Get call",
+              "fullTitle": "Pet Store Tests - Positive Should Get a Pets Details - Get call",
+              "timedOut": false,
+              "duration": 496,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "api.timeout(5000)\nconst res = await api.getRequest(env.url,apiData.apis.getPets.replace(\"$\",ID),apiData.commonHeaders);\ntest(await res.statusCode).to.equal(200);\ntest(await res.body.id).to.equal(ID);\ntest(await res.body.category.id).to.equal(apiData.postPetBody.category.id);\ntest(await res.body.category.name).to.equal(apiData.postPetBody.category.name);\ntest(await res.body.name).to.equal(apiData.postPetBody.name);\ntest(await res.body.photoUrls[0]).to.equal(apiData.postPetBody.photoUrls[0]);\ntest(await res.body.tags[0].id).to.equal(apiData.postPetBody.tags[0].id);\ntest(await res.body.tags[0].name).to.equal(apiData.postPetBody.tags[0].name);\ntest(await res.body.status).to.equal(apiData.postPetBody.status);",
+              "err": {},
+              "uuid": "fe75e462-5dab-45e0-8b34-64c69ac76864",
+              "parentUUID": "6e622fc0-58ad-4cc1-af8e-b80a3a1f453b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should Edit a Pet - Put call",
+              "fullTitle": "Pet Store Tests - Positive Should Edit a Pet - Put call",
+              "timedOut": false,
+              "duration": 489,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "apiData.putPetBody.id = ID;\napiData.putPetBody.name = \"TestPetNameEdit\";\nconst res = await api.putRequest(env.url,apiData.apis.postPets,apiData.putPetBody,apiData.commonHeaders);\ntest(await res.statusCode).to.equal(200);\ntest(await res.body.id).to.equal(ID);\ntest(await res.body.category.id).to.equal(apiData.putPetBody.category.id);\ntest(await res.body.category.name).to.equal(apiData.putPetBody.category.name);\ntest(await res.body.name).to.equal(apiData.putPetBody.name);\ntest(await res.body.photoUrls[0]).to.equal(apiData.putPetBody.photoUrls[0]);\ntest(await res.body.tags[0].id).to.equal(apiData.putPetBody.tags[0].id);\ntest(await res.body.tags[0].name).to.equal(apiData.putPetBody.tags[0].name);\ntest(await res.body.status).to.equal(apiData.putPetBody.status);",
+              "err": {},
+              "uuid": "637bd089-fde7-46ff-bb2c-df934b82e209",
+              "parentUUID": "6e622fc0-58ad-4cc1-af8e-b80a3a1f453b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should Delete a Pet - Delete call",
+              "fullTitle": "Pet Store Tests - Positive Should Delete a Pet - Delete call",
+              "timedOut": false,
+              "duration": 492,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const res = await api.deleteRequest(env.url,apiData.apis.getPets.replace(\"$\",ID),apiData.commonHeaders);\nconsole.log(res.body)\ntest(await res.statusCode).to.equal(200);\ntest(await res.body.type).to.equal(\"unknown\");\ntest(await res.body.message).to.equal(ID.toString());",
+              "err": {},
+              "uuid": "ca05a2c0-f6fd-4bc7-81b2-18e900cab30e",
+              "parentUUID": "6e622fc0-58ad-4cc1-af8e-b80a3a1f453b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "49ce2dde-f8ac-4e49-b5dd-3109b9db121f",
+            "fe75e462-5dab-45e0-8b34-64c69ac76864",
+            "637bd089-fde7-46ff-bb2c-df934b82e209",
+            "ca05a2c0-f6fd-4bc7-81b2-18e900cab30e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1982,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 20000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 20000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.1.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
