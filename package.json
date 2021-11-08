@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pets": "cross-env ENV=dev mocha 'tests/PetStoreTests.js' --reporter mocha-allure-reporter --timeout 20000 --reporter-options reportFilename=APIMochawesomeReport"
   },
   "keywords": [],
   "author": "",
